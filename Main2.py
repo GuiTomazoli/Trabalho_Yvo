@@ -34,9 +34,9 @@ def simplex_solver(A, b, c):
     return optimal_point, optimal_profit, shadow_prices
 
 # Novo exemplo de entrada
-A = np.array([[1, 2], [1, 1], [-1, 0], [0, -1]])
-b = np.array([32, 18, -5, -12])
-c = np.array([-45, -60])
+A = np.array([[3, 0], [0, 1], [-2, -5], [-4, -1], [1, 1]])
+b = np.array([20, 45, -100, -45, 200])
+c = np.array([-5, -9])
 
 try:
     optimal_point, optimal_profit, shadow_prices = simplex_solver(A, b, c)
