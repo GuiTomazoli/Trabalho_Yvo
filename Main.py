@@ -27,17 +27,29 @@ def simplex_solver(A, b, c):
             if i != pivot_row:
                 table[i, :] -= table[i, pivot_col] * table[pivot_row, :]
 
-    shadow_prices = table[0, 2:-3]
+    
+    # Extrai as soluções do exemplo 1
+    shadow_prices = table[0, 2:-1]
+    optimal_profit = table[0, -1]
+    optimal_point = table[2:, -1]
+    '''
+    # Extrai as soluções do exemplo 2
+    shadow_prices = table[0, 2:-1]
     optimal_profit = table[0, -1]
     optimal_point = table[1:3, -1]
-
+    '''
     return optimal_point, optimal_profit, shadow_prices
 
-# Novo exemplo de entrada
-A = np.array([[3, 0], [0, 1], [-2, -5], [-4, -1], [1, 1]])
-b = np.array([20, 45, -100, -45, 200])
-c = np.array([-5, -9])
-
+# Exemplo de entrada 1
+A = np.array([[3, 0], [0, 1.5], [0.25, 0.5]]) #Restrições
+b = np.array([250, 100, 50]) #Lado Direito
+c = np.array([-5, -7]) #MaximizeZ
+'''
+# Exemplo de entrada 2
+A = np.array([[3, 0], [0, 1], [-2, -5], [-4, -1], [1, 1]]) #Restrições
+b = np.array([20, 45, -100, -45, 200]) #Lado Direito
+c = np.array([-5, -9]) #MaximizeZ
+'''
 try:
     optimal_point, optimal_profit, shadow_prices = simplex_solver(A, b, c)
     print("Ponto ótimo:", optimal_point)
