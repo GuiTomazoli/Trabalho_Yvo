@@ -57,7 +57,7 @@ c = np.array([-5, -9]) #MaximizeZ
 '''
 try:
     quadro_otimo, lucro_otimo, valores_otimos, preco_sombra = simplex_solver(A, b, c)
-    print("Quadro otimo:", "\n", quadro_otimo)
+    print("Quadro ótimo:", "\n", quadro_otimo)
     print("Valores ótimos:", valores_otimos)
     print("Lucro ótimo:", lucro_otimo)
     print("Preço-sombra de cada restrição:", preco_sombra)
