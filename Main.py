@@ -1,5 +1,8 @@
 import numpy as np
 
+# Configuração para imprimir números float em vez de notação científica
+np.set_printoptions(precision=2, suppress=True)
+
 def simplex_solver(A, b, c):
     # Adiciona variáveis de folga
     A = np.hstack((A, np.eye(len(b))))
@@ -29,16 +32,18 @@ def simplex_solver(A, b, c):
 
     
     # Extrai as soluções do exemplo 1
-    shadow_prices = table[0, 2:-1]
-    optimal_profit = table[0, -1]
-    optimal_point = table[2:, -1]
+    quadro_otimo = table
+    lucro_otimo = table[0, -1]
+    valores_otimos = table[2:, -1]
+    preco_sombra = table[0, 2:-1]
     '''
     # Extrai as soluções do exemplo 2
-    shadow_prices = table[0, 2:-1]
-    optimal_profit = table[0, -1]
-    optimal_point = table[1:3, -1]
+    quadro_otimo = table
+    lucro_otimo = table[0, -1]
+    valores_otimos = table[1:3, -1]
+    preco_sombra = table[0, 2:-1]
     '''
-    return optimal_point, optimal_profit, shadow_prices
+    return quadro_otimo, lucro_otimo, valores_otimos, preco_sombra
 
 # Exemplo de entrada 1
 A = np.array([[3, 0], [0, 1.5], [0.25, 0.5]]) #Restrições
@@ -51,9 +56,10 @@ b = np.array([20, 45, -100, -45, 200]) #Lado Direito
 c = np.array([-5, -9]) #MaximizeZ
 '''
 try:
-    optimal_point, optimal_profit, shadow_prices = simplex_solver(A, b, c)
-    print("Ponto ótimo:", optimal_point)
-    print("Lucro ótimo:", optimal_profit)
-    print("Preço-sombra de cada restrição:", shadow_prices)
+    quadro_otimo, lucro_otimo, valores_otimos, preco_sombra = simplex_solver(A, b, c)
+    print("Quadro otimo:", "\n", quadro_otimo)
+    print("Valores ótimos:", valores_otimos)
+    print("Lucro ótimo:", lucro_otimo)
+    print("Preço-sombra de cada restrição:", preco_sombra)
 except ValueError as e:
     print(e)
