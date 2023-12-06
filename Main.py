@@ -1,6 +1,6 @@
 import numpy as np
 
-# Configuração para imprimir números float em vez de notação científica
+# Configuração para imprimir números em float
 np.set_printoptions(precision=2, suppress=True)
 
 def simplex_solver(A, b, c):
