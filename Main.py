@@ -34,7 +34,7 @@ def simplex_solver(A, b, c):
     # Extrai as soluções do exemplo 1
     quadro_otimo = table
     lucro_otimo = table[0, 5]
-    valores_otimos = table[1:3:, 5]
+    valores_otimos = table[2:4, 5]
     preco_sombra = table[0, 2:5]
     '''
     # Extrai as soluções do exemplo 2
